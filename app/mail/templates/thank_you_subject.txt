@@ -1,0 +1,5 @@
+{% extends 'base_subject.txt' %}
+
+{% block subject %}
+Message Received
+{% endblock %}
