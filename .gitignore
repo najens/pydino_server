@@ -5,3 +5,10 @@
 
 # cache
 /__pycache__
+__pycache__/
+
+# files
+foo.log
+config.py
+run.py
+local_config.py
