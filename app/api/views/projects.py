@@ -169,7 +169,7 @@ def create_project():
         project.github_url = data['github_url']
 
     if 'read_me' in data:
-        project.read_me = data['read_me']
+        project.read_me = data['read_me'].encode()
 
     if 'topic_main' in data:
         project.topic_main = data['topic_main']
