@@ -11,4 +11,5 @@ __pycache__/
 foo.log
 config.py
 run.py
+wsgi.py
 local_config.py
