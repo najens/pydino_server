@@ -81,7 +81,7 @@ class UserSchema(ma.ModelSchema):
     class Meta:
         model = User
         ordered = True
-        exclude = ('id', 'password', 'salt', 'email')
+        exclude = ('id', 'password', 'salt')
 
     roles = fields.Nested('RoleSchema', many=True, load=True)
 
