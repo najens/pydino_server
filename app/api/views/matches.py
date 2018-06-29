@@ -144,7 +144,7 @@ def create_match():
     data = request.get_json()
 
     # Verify that all required match data was sent
-    match_columns = ['match', 'team1_id', 'team2_id', 'date', 'round']
+    match_columns = ['Match', 'team1_id', 'team2_id', 'date', 'round', 'title']
     if not any(key in data for key in match_columns):
         return make_response(jsonify({'error': 'Missing data!'}), 400)
 
@@ -154,7 +154,8 @@ def create_match():
         team1_id=data['team1_id'],
         team2_id=data['team2_id'],
         date=data['date'],
-        round=data['round'])
+        round=data['round'],
+        title=data['title'])
 
     # Try to add match to database
     try:
