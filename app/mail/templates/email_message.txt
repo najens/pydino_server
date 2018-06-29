@@ -1,4 +1,4 @@
-Dear {{ user['name'] }},
+{{ user['name'] }},
 
 {{ message }}
 

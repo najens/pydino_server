@@ -11,4 +11,4 @@ mail = Blueprint(
 )
 
 # Import blueprint views
-from .views import emails, contact  # noqa
+from .views import emails, contact, send_email  # noqa

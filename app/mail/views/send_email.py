@@ -1,5 +1,6 @@
 from app.mail import mail
-from app.mail.utils.emails import send_all_emaill
+from app.mail.utils.emails import send_all_email
+from app.models import User
 from flask import request, jsonify
 from app import app
 
@@ -38,16 +39,8 @@ def email():
         return jsonify({'error': 'Some problem occurred!'}), 400
 
     for user in users:
-        app.logger.info(user)
         # Send email to all users
-        # send_all_email(user, subj, message)
-
-    user = {
-        'name': 'Nate',
-        'email': 'najens@gmail.com',
-    }
-
-    send_all_email(user, subj, message)
+        send_all_email(user, subj, message)
 
     # Return json response with success message
     success = 'Your message has been sent to all users'
