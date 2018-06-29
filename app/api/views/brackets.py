@@ -350,7 +350,7 @@ def edit_bracket(id):
         bracket.r2_1 = data['r2_1']
 
     if 'r2_2' in data:
-        bracket.r2_1 = data['r2_2']
+        bracket.r2_2 = data['r2_2']
 
     db.session.commit()
 

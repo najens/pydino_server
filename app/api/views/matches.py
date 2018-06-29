@@ -150,7 +150,7 @@ def create_match():
 
     # Create match object
     match = Match(
-        match=data['match'],
+        match=data['Match'],
         team1_id=data['team1_id'],
         team2_id=data['team2_id'],
         date=data['date'],
@@ -164,7 +164,7 @@ def create_match():
     # If match number already in database, return error
     except IntegrityError:
         return jsonify({
-            'error': 'User with name or email already exists'
+            'error': 'Match already exists'
         }), 400
 
     # If some other sqlalchemy error is thrown, return error
@@ -294,35 +294,35 @@ def edit_match(id):
     except SQLAlchemyError:
         return jsonify({'error': 'Some problem occurred!'}), 400
 
-    if 'team1_score' in data:
-        team1_score = int(data['team1_score'])
-        team1.GF += team1_score
-        if 'team2_score' in data:
-            team2_score = int(data['team2_score'])
-            team1.MP += 1
-            team2.MP += 1
-            team2.GF += team2_score
-            team1.GA += team2_score
-            team1.GD += (team1_score - team2_score)
-            team2.GA += team1_score
-            team2.GD += (team2_score - team1_score)
-            if team1_score > team2_score:
-                team1.W += 1
-                team1.Pts += 3
-                team2.L += 1
-
-            if team2_score > team1_score:
-                team2.W += 1
-                team2.Pts += 3
-                team1.L += 1
-
-            if team1_score == team2_score:
-                team1.D += 1
-                team1.Pts += 1
-                team2.D += 1
-                team2.Pts += 1
-
-    db.session.commit()
+    # if 'team1_score' in data:
+    #     team1_score = int(data['team1_score'])
+    #     team1.GF += team1_score
+    #     if 'team2_score' in data:
+    #         team2_score = int(data['team2_score'])
+    #         team1.MP += 1
+    #         team2.MP += 1
+    #         team2.GF += team2_score
+    #         team1.GA += team2_score
+    #         team1.GD += (team1_score - team2_score)
+    #         team2.GA += team1_score
+    #         team2.GD += (team2_score - team1_score)
+    #         if team1_score > team2_score:
+    #             team1.W += 1
+    #             team1.Pts += 3
+    #             team2.L += 1
+    #
+    #         if team2_score > team1_score:
+    #             team2.W += 1
+    #             team2.Pts += 3
+    #             team1.L += 1
+    #
+    #         if team1_score == team2_score:
+    #             team1.D += 1
+    #             team1.Pts += 1
+    #             team2.D += 1
+    #             team2.Pts += 1
+    #
+    # db.session.commit()
 
     # Serialize match
     match_schema = MatchSchema()

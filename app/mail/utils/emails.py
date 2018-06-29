@@ -164,3 +164,24 @@ def send_thank_you_email(user):
 
     # Send email message using Flask-Mail
     send_email(email, subject, html_message, text_message)
+
+
+def send_all_email(user, subj, message):
+    '''Sends a thank you email to the recipient
+
+    Arg {object} user - name, email
+    '''
+    # Retrieve email address from user
+    email = user['email']
+    assert(email)
+
+    # Render subject, html message and text message
+    subject, html_message, text_message = _render_email(
+            '/email',
+            user=user,
+            subj=subj,
+            message=message,
+            app_name=app.config.get('APP_NAME'))
+
+    # Send email message using Flask-Mail
+    send_email(email, subject, html_message, text_message)
