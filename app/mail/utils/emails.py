@@ -172,7 +172,7 @@ def send_all_email(user, subj, message):
     Arg {object} user - name, email
     '''
     # Retrieve email address from user
-    email = user['email']
+    email = user.email
     assert(email)
 
     # Render subject, html message and text message
